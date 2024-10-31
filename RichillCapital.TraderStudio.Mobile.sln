@@ -3,20 +3,22 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RichillCapital.TraderStudio.Mobile", "RichillCapital.TraderStudio.Mobile\RichillCapital.TraderStudio.Mobile.csproj", "{2EEACAE0-C624-446F-AFE7-BF853F8B01DA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RichillCapital.TraderStudio.Mobile", "RichillCapital.TraderStudio.Mobile\RichillCapital.TraderStudio.Mobile.csproj", "{EC378BDD-0BA4-4495-953D-32BA81A75992}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EC378BDD-0BA4-4495-953D-32BA81A75992}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC378BDD-0BA4-4495-953D-32BA81A75992}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC378BDD-0BA4-4495-953D-32BA81A75992}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{EC378BDD-0BA4-4495-953D-32BA81A75992}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC378BDD-0BA4-4495-953D-32BA81A75992}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC378BDD-0BA4-4495-953D-32BA81A75992}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{2EEACAE0-C624-446F-AFE7-BF853F8B01DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2EEACAE0-C624-446F-AFE7-BF853F8B01DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2EEACAE0-C624-446F-AFE7-BF853F8B01DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2EEACAE0-C624-446F-AFE7-BF853F8B01DA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
