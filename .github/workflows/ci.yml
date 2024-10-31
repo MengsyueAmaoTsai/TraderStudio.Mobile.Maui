@@ -17,7 +17,7 @@ env:
   CAKE_FILE: build.cake
   TARGET: Default
   CONFIGURATION: Debug
-  # PUBLISH_DiRECTORY: ./publish
+  PUBLISH_DiRECTORY: ./artifacts
 
 jobs:
   build:
@@ -60,6 +60,6 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: ${{ env.APPLICATION_NAME }}-${{ steps.version.outputs.version }}-android-${{ env.CONFIGURATION }}
-        path: ${{ env.PUBLISH_DiRECTORY }}     
+        path: ${{ env.PUBLISH_DiRECTORY }}/*Signed.apk     
   
   
