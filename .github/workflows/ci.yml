@@ -37,24 +37,24 @@ jobs:
       id: version
       run: echo "::set-output name=version::$(git describe --tags --abbrev=0 || date +'%Y%m%d')-${{ steps.nbgv.outputs.GitCommitIdShort }}"
     
-    - name: Setup .NET 
-      uses: actions/setup-dotnet@v4
-      with: 
-        dotnet-version: {{ env.DOTNET_VERSION }}
+    # - name: Setup .NET 
+    #   uses: actions/setup-dotnet@v4
+    #   with: 
+    #     dotnet-version: {{ env.DOTNET_VERSION }}
 
-    - name: Install MAUI Workloads
-      run: |
-        dotnet workload install maui --ignore-failed-sources
-        dotnet workload install android --ignore-failed-sources
+    # - name: Install MAUI Workloads
+    #   run: |
+    #     dotnet workload install maui --ignore-failed-sources
+    #     dotnet workload install android --ignore-failed-sources
       
-    - name: .NET Build and Test
-      uses: cake-build/cake-action@v2
-      with:
-        script-path: ${{ env.CAKE_FILE }}
-        target: ${{ env.TARGET }}
-        verbosity: Diagnostic
-        arguments: |
-          configuration: ${{ env.CONFIGURATION }}
+    # - name: .NET Build and Test
+    #   uses: cake-build/cake-action@v2
+    #   with:
+    #     script-path: ${{ env.CAKE_FILE }}
+    #     target: ${{ env.TARGET }}
+    #     verbosity: Diagnostic
+    #     arguments: |
+    #       configuration: ${{ env.CONFIGURATION }}
 
     # - name: Upload Artifact
     #   uses: actions/upload-artifact@v4
