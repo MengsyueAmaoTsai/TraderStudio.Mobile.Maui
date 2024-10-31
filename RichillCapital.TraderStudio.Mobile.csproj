@@ -8,6 +8,7 @@
 		<Nullable>enable</Nullable>
 
 		<TargetFrameworks>net8.0-android</TargetFrameworks>
+    <AndroidManifest>Src\Platforms\Android\AndroidManifest.xml</AndroidManifest>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21.0</SupportedOSPlatformVersion>
 
 		<ApplicationTitle>RichillCapital.TraderStudio.Mobile</ApplicationTitle>
