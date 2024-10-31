@@ -1,0 +1,65 @@
+name: RichillCapital.TraderStudio.Mobile CI
+
+on:
+  push:
+    branches: 
+      - master
+      - dev
+
+  pull_request:
+    branches: 
+      - master
+      - dev
+
+env:
+  DOTNET_VERSION: 8.0.x
+  APPLICATION_NAME: RichillCapital.TraderStudio.Mobile
+  CAKE_FILE: build.cake
+  TARGET: Default
+  CONFIGURATION: Debug
+  # PUBLISH_DiRECTORY: ./publish
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps: 
+    - name: Checkout Repository
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+
+    - name: Use Nerdbank.GitVersioning
+      uses: dotnet/nbgv@master
+      id: nbgv    
+
+    - name: Get Version
+      id: version
+      run: echo "::set-output name=version::$(git describe --tags --abbrev=0 || date +'%Y%m%d')-${{ steps.nbgv.outputs.GitCommitIdShort }}"
+    
+    - name: Setup .NET 
+      uses: actions/setup-dotnet@v4
+      with: 
+        dotnet-version: {{ env.DOTNET_VERSION }}
+
+    - name: Install MAUI Workloads
+      run: |
+        dotnet workload install maui --ignore-failed-sources
+        dotnet workload install android --ignore-failed-sources
+      
+    - name: .NET Build and Test
+      uses: cake-build/cake-action@v2
+      with:
+        script-path: ${{ env.CAKE_FILE }}
+        target: ${{ env.TARGET }}
+        verbosity: Diagnostic
+        arguments: |
+          configuration: ${{ env.CONFIGURATION }}
+
+    # - name: Upload Artifact
+    #   uses: actions/upload-artifact@v4
+    #   with:
+    #     name: ${{ env.APPLICATION_NAME }}-${{ steps.version.outputs.version }}-${{ matrix.os }}-${{ env.CONFIGURATION }}
+    #     path: ${{ env.PUBLISH_DiRECTORY }}     
+  
+  
