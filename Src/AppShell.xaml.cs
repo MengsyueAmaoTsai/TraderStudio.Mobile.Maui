@@ -1,10 +1,9 @@
-﻿namespace RichillCapital.TraderStudio.Mobile
+﻿namespace RichillCapital.TraderStudio.Mobile;
+
+public sealed partial class AppShell : Shell
 {
-    public partial class AppShell : Shell
+    public AppShell()
     {
-        public AppShell()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
     }
 }

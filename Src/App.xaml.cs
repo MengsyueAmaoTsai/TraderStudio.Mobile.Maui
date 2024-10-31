@@ -1,12 +1,11 @@
-﻿namespace RichillCapital.TraderStudio.Mobile
-{
-    public partial class App : Application
-    {
-        public App()
-        {
-            InitializeComponent();
+﻿namespace RichillCapital.TraderStudio.Mobile;
 
-            MainPage = new AppShell();
-        }
+public sealed partial class App : Application
+{
+    public App()
+    {
+        InitializeComponent();
+
+        MainPage = new AppShell();
     }
 }
