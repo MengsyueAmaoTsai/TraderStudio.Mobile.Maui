@@ -11,8 +11,8 @@
     <AndroidManifest>Src\Platforms\Android\AndroidManifest.xml</AndroidManifest>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21.0</SupportedOSPlatformVersion>
 
+		<ApplicationId>RichillCapital.TraderStudio.Mobile</ApplicationId>
 		<ApplicationTitle>RichillCapital.TraderStudio.Mobile</ApplicationTitle>
-		<ApplicationId>com.companyname.richillcapital.traderstudio.mobile</ApplicationId>
 		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
 		<ApplicationVersion>1</ApplicationVersion>
 	</PropertyGroup>
