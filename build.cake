@@ -8,6 +8,7 @@ Task("Clean")
     .Does(() =>
     {
         DotNetClean(solution);
+        CleanDirectory(publishDirectory);
     });
 
 Task("Restore")
