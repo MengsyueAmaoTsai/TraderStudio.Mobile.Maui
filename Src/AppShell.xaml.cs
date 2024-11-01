@@ -1,6 +1,4 @@
-﻿using RichillCapital.TraderStudio.Mobile.Pages;
-
-namespace RichillCapital.TraderStudio.Mobile;
+﻿namespace RichillCapital.TraderStudio.Mobile;
 
 public sealed partial class AppShell : Shell
 {
@@ -12,6 +10,5 @@ public sealed partial class AppShell : Shell
 
     private static void RegisterRoutes()
     {
-        Routing.RegisterRoute(nameof(SignalSourcesPage), typeof(SignalSourcesPage));
     }
 }

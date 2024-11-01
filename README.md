@@ -2,12 +2,7 @@
 
 [![RichillCapital.TraderStudio.Mobile CI](https://github.com/MengsyueAmaoTsai/TraderStudio.Mobile.Maui/actions/workflows/ci.yml/badge.svg)](https://github.com/MengsyueAmaoTsai/TraderStudio.Mobile.Maui/actions/workflows/ci.yml)
 
-###### Generate key
-
+## Deploy to android virtual device
 ```bash
-keytool.exe -genkey -v -keystore myapp.keystore -alias key -keyalg RSA -keysize 2048 -validity 10000
+emulator.exe -netfast -accel on -avd <AndroidVirtualDeviceName> -prop monodroid.avdname=<AndroidVirtualDeviceName>
 ```
-
-[References]
-
-https://www.youtube.com/watch?v=GQuQPm40kys&t=1296s&ab_channel=GeraldVersluis
