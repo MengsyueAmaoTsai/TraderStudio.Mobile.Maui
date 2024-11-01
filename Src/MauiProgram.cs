@@ -7,6 +7,8 @@ public static class MauiProgram
     public static MauiApp CreateMauiApp()
     {
         var builder = MauiApp.CreateBuilder();
+
+        // Presentation layer services
         builder
             .UseMauiApp<App>()
             .ConfigureFonts(fonts =>
@@ -16,6 +18,7 @@ public static class MauiProgram
             });
 
         builder.Services.AddTransient<MainPage>();
+        builder.Services.AddTransient<MainViewModel>();
 
 #if DEBUG
         builder.Logging.AddDebug();

@@ -17,7 +17,7 @@ env:
   CAKE_FILE: build.cake
   TARGET: Default
   CONFIGURATION: Debug
-  PUBLISH_DiRECTORY: ./artifacts
+  PUBLISH_DIRECTORY: ./artifacts
 
 jobs:
   build:
@@ -41,6 +41,9 @@ jobs:
       uses: actions/setup-dotnet@v4
       with: 
         dotnet-version: ${{ env.DOTNET_VERSION }}
+    
+    - name: Restore Workloads
+      run: dotnet workload restore
 
     - name: Install MAUI Workloads
       run: |
@@ -60,6 +63,6 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: ${{ env.APPLICATION_NAME }}-${{ steps.version.outputs.version }}-android-${{ env.CONFIGURATION }}
-        path: ${{ env.PUBLISH_DiRECTORY }}/*Signed.apk     
+        path: ${{ env.PUBLISH_DIRECTORY }}/**/*Signed.apk     
   
   
