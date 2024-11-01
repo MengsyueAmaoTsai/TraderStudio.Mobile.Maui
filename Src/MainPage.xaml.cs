@@ -1,9 +1,9 @@
-﻿namespace RichillCapital.TraderStudio.Mobile;
+﻿using RichillCapital.TraderStudio.Mobile.Pages;
+
+namespace RichillCapital.TraderStudio.Mobile;
 
 public sealed partial class MainPage : ContentPage
 {
-    int count = 0;
-
     public MainPage()
     {
         InitializeComponent();
@@ -11,18 +11,7 @@ public sealed partial class MainPage : ContentPage
 
     private void OnCounterClicked(object sender, EventArgs e)
     {
-        count++;
-
-        if (count == 1)
-        {
-            CounterBtn.Text = $"Clicked {count} time";
-        }
-        else
-        {
-            CounterBtn.Text = $"Clicked {count} times";
-        }
-
-        SemanticScreenReader.Announce(CounterBtn.Text);
+        Shell.Current.GoToAsync(nameof(SignalSourcesPage));
     }
 }
 
