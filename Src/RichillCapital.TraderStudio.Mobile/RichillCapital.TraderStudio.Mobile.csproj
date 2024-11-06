@@ -1,25 +1,19 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>net8.0;net8.0-android</TargetFrameworks>
-		<OutputType Condition="'$(TargetFramework)' != 'net8.0'">Exe</OutputType>
-		<RootNamespace>RichillCapital.TraderStudio.Mobile</RootNamespace>
 		<UseMaui>true</UseMaui>
 		<SingleProject>true</SingleProject>
+		<RootNamespace>RichillCapital.TraderStudio.Mobile</RootNamespace>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
+		<TargetFrameworks>net8.0;net8.0-android</TargetFrameworks>
+		<OutputType Condition="'$(TargetFramework)' != 'net8.0'">Exe</OutputType>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21.0</SupportedOSPlatformVersion>
 
-		<!-- Display name -->
 		<ApplicationTitle>RichillCapital.TraderStudio.Mobile</ApplicationTitle>
-
-		<!-- App Identifier -->
-		<ApplicationId>com.companyname.richillcapital.traderstudio.mobile</ApplicationId>
-
-		<!-- Versions -->
+		<ApplicationId>RichillCapital.TraderStudio.Mobile</ApplicationId>
 		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
 		<ApplicationVersion>1</ApplicationVersion>
-
-		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21.0</SupportedOSPlatformVersion>
 	</PropertyGroup>
 
 	<ItemGroup>
