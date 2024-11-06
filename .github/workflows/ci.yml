@@ -10,6 +10,13 @@ on:
       - master
       - dev
 
+env:
+    DOTNET_VERSION: 8.0.x
+    MOBILE_PROJECT: ./Src/RichillCapital.TraderStudio.Mobile/RichillCapital.TraderStudio.Mobile.csproj
+    CONFIGURATION: Debug
+    TARGET_FRAMEWORK: net8.0-android
+    OUTPUT_DIRECTORY: ./artifact
+
 jobs:
   build:
     runs-on: windows-latest
@@ -23,10 +30,10 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: 8.0.x
+          dotnet-version: ${{ env.DOTNET_VERSION }}
 
       - name: Setup MSBuild.exe
-        uses: microsoft/setup-msbuild@v1.0.2
+        uses: microsoft/setup-msbuild@v2
 
       - name: Install MAUI Workloads
         run: dotnet workload install android
@@ -35,16 +42,16 @@ jobs:
         run: dotnet restore
 
       - name: Build
-        run: dotnet build -c Debug --no-restore
+        run: dotnet build ${{ env.MOBILE_PROJECT }} -c ${{ env.CONFIGURATION }} --no-restore
 
     #   - name: Run Tests
     #     run: dotnet test --no-restore --verbosity normal
-    
+
       - name: Publish Android APK
-        run: dotnet publish ./Src/RichillCapital.TraderStudio.Mobile/RichillCapital.TraderStudio.Mobile.csproj -c Debug -f net8.0-android -o ./artifact --no-restore 
+        run: dotnet publish ${{ env.MOBILE_PROJECT }} -c ${{ env.CONFIGURATION }} -f ${{ env.TARGET_FRAMEWORK }} -o ${{ env.OUTPUT_DIRECTORY }} --no-restore 
 
       - name: Upload Artifact  
         uses: actions/upload-artifact@v4
         with:
-          name: RichillCapital.TraderStudio.Mobile-1.0.0-Android-Debug
-          path: ./artifact/**/*Signed.apk
+          name: RichillCapital.TraderStudio.Mobile-1.0.0-Android-${{ env.CONFIGURATION }}
+          path: ${{ env.OUTPUT_DIRECTORY }}/**/*Signed.apk
