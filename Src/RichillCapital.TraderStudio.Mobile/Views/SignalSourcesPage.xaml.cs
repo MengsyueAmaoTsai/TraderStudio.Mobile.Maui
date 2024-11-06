@@ -1,9 +1,22 @@
+using RichillCapital.TraderStudio.Mobile.ViewModels;
+
 namespace RichillCapital.TraderStudio.Mobile.Views;
 
-public partial class SignalSourcesPage : ContentPage
+public sealed partial class SignalSourcesPage : ContentPage
 {
-	public SignalSourcesPage()
+	public SignalSourcesPage(SignalSourcesViewModel viewModel)
 	{
-		InitializeComponent();
+        BindingContext = viewModel;
+        InitializeComponent();
 	}
+
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+
+        if (BindingContext is IViewModel viewModel)
+        {
+            viewModel.InitializeAsyncCommand.Execute(null);
+        };
+    }
 }

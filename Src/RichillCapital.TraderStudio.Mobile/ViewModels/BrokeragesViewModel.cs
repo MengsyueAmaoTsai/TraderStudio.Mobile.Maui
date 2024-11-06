@@ -16,22 +16,13 @@ public sealed partial class BrokeragesViewModel : ViewModel
         : base(navigationService)
     {
         _brokerageService = brokerageService;
-
-        ListBrokeragesAsyncCommand =
-            new AsyncRelayCommand(
-                async () =>
-                {
-                    await IsBusyFor(ListBrokeragesAsync);
-                },
-                AsyncRelayCommandOptions.FlowExceptionsToTaskScheduler);
     }
 
-    public IAsyncRelayCommand ListBrokeragesAsyncCommand { get; }
     public ObservableCollection<BrokerageItem> Brokerages { get; } = [];
 
-    private async Task ListBrokeragesAsync()
+    protected override async Task InitializeAsync()
     {
-        var result = await _brokerageService.ListBrokeragesAsync();
+        var result = await _brokerageService.ListBrokeragesAsync(default);
 
         if (result.IsFailure)
         {
@@ -44,5 +35,6 @@ public sealed partial class BrokeragesViewModel : ViewModel
         {
             Brokerages.Add(b);
         }
+
     }
 }

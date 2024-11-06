@@ -1,9 +1,22 @@
+using RichillCapital.TraderStudio.Mobile.ViewModels;
+
 namespace RichillCapital.TraderStudio.Mobile.Views;
 
-public partial class DataFeedsPage : ContentPage
+public sealed partial class DataFeedsPage : ContentPage
 {
-	public DataFeedsPage()
+	public DataFeedsPage(DataFeedsViewModel viewModel)
 	{
-		InitializeComponent();
+        BindingContext = viewModel;
+        InitializeComponent();
 	}
+
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+
+        if (BindingContext is IViewModel viewModel)
+        {
+            viewModel.InitializeAsyncCommand.Execute(null);
+        };
+    }
 }

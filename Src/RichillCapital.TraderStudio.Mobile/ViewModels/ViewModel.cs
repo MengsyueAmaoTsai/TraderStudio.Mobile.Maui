@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using RichillCapital.TraderStudio.Mobile.Services.Navigation;
 
 namespace RichillCapital.TraderStudio.Mobile.ViewModels;
@@ -14,9 +15,20 @@ public abstract partial class ViewModel :
         INavigationService navigationService)
     {
         _navigationService = navigationService;
+
+        InitializeAsyncCommand =
+            new AsyncRelayCommand(
+                async () =>
+                {
+                    await IsBusyFor(InitializeAsync);
+                },
+                AsyncRelayCommandOptions.FlowExceptionsToTaskScheduler);
     }
 
     public bool IsBusy => Interlocked.Read(ref _isBusy) > 0;
+    public IAsyncRelayCommand InitializeAsyncCommand { get; }
+
+    protected virtual Task InitializeAsync() => Task.CompletedTask;
 
     protected async Task IsBusyFor(Func<Task> unitOfWork)
     {

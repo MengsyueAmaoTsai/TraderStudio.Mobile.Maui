@@ -14,9 +14,9 @@ public sealed partial class BrokeragesPage : ContentPage
     {
         base.OnAppearing();
 
-        if (BindingContext is BrokeragesViewModel viewModel)
+        if (BindingContext is IViewModel viewModel)
         {
-            viewModel.ListBrokeragesAsyncCommand.Execute(null);
+            viewModel.InitializeAsyncCommand.Execute(null);
         };
     }
 }
