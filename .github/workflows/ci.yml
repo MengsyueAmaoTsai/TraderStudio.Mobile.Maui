@@ -45,7 +45,7 @@ jobs:
         run: dotnet build ${{ env.MOBILE_PROJECT }} -c ${{ env.CONFIGURATION }} -f ${{ env.TARGET_FRAMEWORK }} --no-restore
 
       - name: Run Tests
-        run: dotnet test -c ${{ env.CONFIGURATION }} -f ${{ env.TARGET_FRAMEWORK }} --no-restore --verbosity normal
+        run: dotnet test -c ${{ env.CONFIGURATION }} -f net8.0 --no-restore --verbosity normal
 
       - name: Publish Android APK
         run: dotnet publish ${{ env.MOBILE_PROJECT }} -c ${{ env.CONFIGURATION }} -f ${{ env.TARGET_FRAMEWORK }} -o ${{ env.OUTPUT_DIRECTORY }} --no-restore 
