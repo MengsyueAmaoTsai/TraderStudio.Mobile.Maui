@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:RichillCapital.TraderStudio.Mobile.ViewModels"
+             xmlns:templates="clr-namespace:RichillCapital.TraderStudio.Mobile.Views.Templates"
              x:Class="RichillCapital.TraderStudio.Mobile.Views.DataFeedsPage"
+             x:DataType="viewModels:DataFeedsViewModel"
              Title="DataFeedsPage">
-    <Label Text="Hello, data feeds"/>
+    <CollectionView 
+        ItemsSource="{Binding DataFeeds}">
+        <CollectionView.ItemTemplate>
+            <DataTemplate>
+                <templates:DataFeedItemTemplate />
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+    </CollectionView>
 </ContentPage>
