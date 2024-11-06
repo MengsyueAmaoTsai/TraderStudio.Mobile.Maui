@@ -23,7 +23,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Using Include="Xunit" />
+    <ProjectReference Include="..\..\Src\RichillCapital.TraderStudio.Mobile\RichillCapital.TraderStudio.Mobile.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Using Include="Xunit" />
+  </ItemGroup>
 </Project>
