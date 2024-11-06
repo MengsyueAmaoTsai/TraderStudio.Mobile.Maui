@@ -15,7 +15,7 @@ env:
     MOBILE_PROJECT: ./Src/RichillCapital.TraderStudio.Mobile/RichillCapital.TraderStudio.Mobile.csproj
     CONFIGURATION: Debug
     TARGET_FRAMEWORK: net8.0-android
-    OUTPUT_DIRECTORY: ./artifact
+    OUTPUT_DIRECTORY: ./artifacts
 
 jobs:
   build:
@@ -27,7 +27,7 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Setup .NET
+      - name: Setup .NET SDK ${{ env.DOTNET_VERSION }}
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: ${{ env.DOTNET_VERSION }}
@@ -42,7 +42,7 @@ jobs:
         run: dotnet restore
 
       - name: Build
-        run: dotnet build ${{ env.MOBILE_PROJECT }} -c ${{ env.CONFIGURATION }} --no-restore
+        run: dotnet build ${{ env.MOBILE_PROJECT }} -c ${{ env.CONFIGURATION }} -f ${{ env.TARGET_FRAMEWORK }} --no-restore
 
     #   - name: Run Tests
     #     run: dotnet test --no-restore --verbosity normal
