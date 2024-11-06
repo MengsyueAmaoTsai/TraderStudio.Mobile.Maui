@@ -5,11 +5,30 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:RichillCapital.TraderStudio.Mobile"
     xmlns:views="clr-namespace:RichillCapital.TraderStudio.Mobile.Views"
-    Shell.FlyoutBehavior="Disabled"
+    Shell.FlyoutBehavior="Flyout"
     Title="RichillCapital.TraderStudio.Mobile">
 
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate views:MainPage}"
-        Route="MainPage" />
+    <FlyoutItem Title="Home">
+        <ShellContent 
+            Title="Home" 
+            ContentTemplate="{DataTemplate views:MainPage}"/>
+    </FlyoutItem>
+    
+    <FlyoutItem Title="Brokerages">
+        <ShellContent 
+            Title="Brokerages" 
+            ContentTemplate="{DataTemplate views:BrokeragesPage}"/>
+    </FlyoutItem>
+
+    <FlyoutItem Title="Data Feeds">
+        <ShellContent 
+            Title="Data Feeds" 
+            ContentTemplate="{DataTemplate views:DataFeedsPage}"/>
+    </FlyoutItem>
+
+    <FlyoutItem Title="Signal Sources">
+        <ShellContent 
+            Title="Signal Sources" 
+            ContentTemplate="{DataTemplate views:SignalSourcesPage}"/>
+    </FlyoutItem>
 </Shell>
