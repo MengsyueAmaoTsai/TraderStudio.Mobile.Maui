@@ -1,4 +1,5 @@
 ﻿using RichillCapital.TraderStudio.Mobile.Models;
+using RichillCapital.TraderStudio.Mobile.Services.Dialog;
 using RichillCapital.TraderStudio.Mobile.Services.Features;
 using RichillCapital.TraderStudio.Mobile.Services.Navigation;
 using System.Collections.ObjectModel;
@@ -11,8 +12,9 @@ public sealed partial class SignalSourcesViewModel : ViewModel
 
     public SignalSourcesViewModel(
         INavigationService navigationService,
+        IDialogService dialogService,
         ISignalSourceService signalSourceService)
-        : base(navigationService)
+        : base(navigationService, dialogService)
     {
         _signalSourceService = signalSourceService;
     }

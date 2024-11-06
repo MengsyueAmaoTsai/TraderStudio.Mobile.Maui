@@ -1,5 +1,5 @@
-﻿using CommunityToolkit.Mvvm.Input;
-using RichillCapital.TraderStudio.Mobile.Models;
+﻿using RichillCapital.TraderStudio.Mobile.Models;
+using RichillCapital.TraderStudio.Mobile.Services.Dialog;
 using RichillCapital.TraderStudio.Mobile.Services.Features;
 using RichillCapital.TraderStudio.Mobile.Services.Navigation;
 using System.Collections.ObjectModel;
@@ -12,8 +12,9 @@ public sealed partial class BrokeragesViewModel : ViewModel
 
     public BrokeragesViewModel(
         INavigationService navigationService,
+        IDialogService dialogService,
         IBrokerageService brokerageService)
-        : base(navigationService)
+        : base(navigationService, dialogService)
     {
         _brokerageService = brokerageService;
     }

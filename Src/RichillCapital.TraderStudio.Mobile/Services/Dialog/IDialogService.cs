@@ -1,6 +1,6 @@
-﻿namespace RichillCapital.TraderStudio.Mobile.Services.Dialog
+﻿namespace RichillCapital.TraderStudio.Mobile.Services.Dialog;
+
+public interface IDialogService
 {
-    internal interface IDialogService
-    {
-    }
+    Task ShowAlertAsync(string title, string message, string buttonLabel);
 }

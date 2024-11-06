@@ -1,5 +1,6 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using RichillCapital.TraderStudio.Mobile.Services.Dialog;
 using RichillCapital.TraderStudio.Mobile.Services.Navigation;
 
 namespace RichillCapital.TraderStudio.Mobile.ViewModels;
@@ -10,11 +11,14 @@ public abstract partial class ViewModel :
 {
     private long _isBusy;
     protected readonly INavigationService _navigationService;
+    protected readonly IDialogService _dialogService;
 
     protected ViewModel(
-        INavigationService navigationService)
+        INavigationService navigationService,
+        IDialogService dialogService)
     {
         _navigationService = navigationService;
+        _dialogService = dialogService;
 
         InitializeAsyncCommand =
             new AsyncRelayCommand(
@@ -38,6 +42,13 @@ public abstract partial class ViewModel :
         try
         {
             await unitOfWork();
+        }
+        catch (Exception ex)
+        {
+            await _dialogService.ShowAlertAsync(
+                "Error",
+                $"An error occurred while processing your request. {ex}",
+                "Ok");
         }
         finally
         {

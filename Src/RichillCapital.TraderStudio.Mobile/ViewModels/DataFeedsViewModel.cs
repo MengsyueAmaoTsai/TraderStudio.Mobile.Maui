@@ -1,4 +1,5 @@
 ﻿using RichillCapital.TraderStudio.Mobile.Models;
+using RichillCapital.TraderStudio.Mobile.Services.Dialog;
 using RichillCapital.TraderStudio.Mobile.Services.Features;
 using RichillCapital.TraderStudio.Mobile.Services.Navigation;
 using System.Collections.ObjectModel;
@@ -11,8 +12,9 @@ public sealed partial class DataFeedsViewModel : ViewModel
 
     public DataFeedsViewModel(
         INavigationService navigationService,
+        IDialogService dialogService,
         IDataFeedService dataFeedService)
-        : base(navigationService)
+        : base(navigationService, dialogService)
     {
         _dataFeedService = dataFeedService;
     }
