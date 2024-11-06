@@ -1,9 +1,22 @@
+using RichillCapital.TraderStudio.Mobile.ViewModels;
+
 namespace RichillCapital.TraderStudio.Mobile.Views;
 
-public partial class BrokeragesPage : ContentPage
+public sealed partial class BrokeragesPage : ContentPage
 {
-	public BrokeragesPage()
-	{
-		InitializeComponent();
-	}
+    public BrokeragesPage(BrokeragesViewModel viewModel)
+    {
+        BindingContext = viewModel;
+        InitializeComponent();
+    }
+
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+
+        if (BindingContext is BrokeragesViewModel viewModel)
+        {
+            viewModel.ListBrokeragesAsyncCommand.Execute(null);
+        };
+    }
 }

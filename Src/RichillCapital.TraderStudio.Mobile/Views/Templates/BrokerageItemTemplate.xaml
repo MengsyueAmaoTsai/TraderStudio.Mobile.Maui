@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:models="clr-namespace:RichillCapital.TraderStudio.Mobile.Models"
+             x:Class="RichillCapital.TraderStudio.Mobile.Views.Templates.BrokerageItemTemplate"
+             x:DataType="models:BrokerageItem">
+    <ContentView.Content>
+        <Frame>
+            <Grid RowDefinitions="Auto, Auto, Auto, Auto" ColumnDefinitions="Auto, Auto">
+                <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding Name}"/>
+                <Label Grid.Row="1" Grid.Column="1" Text="{Binding Status}" />
+                <Label Grid.Row="3" Grid.ColumnSpan="2" Text="{Binding CreatedTimeUtc, StringFormat='Created on: {0:yyyy-MM-dd HH:mm:ss}'}"/>
+            </Grid>
+        </Frame>
+    </ContentView.Content>
+</ContentView>
