@@ -1,4 +1,5 @@
-﻿using RichillCapital.TraderStudio.Mobile.Models;
+﻿using CommunityToolkit.Mvvm.Input;
+using RichillCapital.TraderStudio.Mobile.Models;
 using RichillCapital.TraderStudio.Mobile.Services.Dialog;
 using RichillCapital.TraderStudio.Mobile.Services.Features;
 using RichillCapital.TraderStudio.Mobile.Services.Navigation;
@@ -21,21 +22,27 @@ public sealed partial class BrokeragesViewModel : ViewModel
 
     public ObservableCollection<BrokerageItem> Brokerages { get; } = [];
 
-    protected override async Task InitializeAsync()
+    protected override async Task InitializeAsync() => 
+        await IsBusyFor(async () =>
+        {
+            var result = await _brokerageService.ListBrokeragesAsync(default);
+
+            if (result.IsFailure)
+            {
+                return;
+            }
+
+            Brokerages.Clear();
+
+            foreach (var b in result.Value)
+            {
+                Brokerages.Add(b);
+            };
+        });
+
+    [RelayCommand]
+    private async Task ViewDetailsAsync()
     {
-        var result = await _brokerageService.ListBrokeragesAsync(default);
-
-        if (result.IsFailure)
-        {
-            return;
-        }
-
-        Brokerages.Clear();
-
-        foreach (var b in result.Value)
-        {
-            Brokerages.Add(b);
-        }
-
+        await _dialogService.ShowAlertAsync("Details", "This is brokerage details for ", "Ok");
     }
 }

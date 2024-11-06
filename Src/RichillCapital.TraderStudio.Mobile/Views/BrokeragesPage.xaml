@@ -7,7 +7,8 @@
              x:DataType="viewModels:BrokeragesViewModel"
              Title="BrokeragesPage">
     <CollectionView 
-        ItemsSource="{Binding Brokerages}">
+        ItemsSource="{Binding Brokerages}"
+        SelectionChangedCommand="{Binding ViewDetailsCommand}">
         <CollectionView.ItemTemplate>
             <DataTemplate>
                 <templates:BrokerageItemTemplate />
