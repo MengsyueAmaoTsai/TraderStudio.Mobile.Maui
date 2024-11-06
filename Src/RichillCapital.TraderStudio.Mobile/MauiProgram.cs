@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Logging;
 using RichillCapital.TraderStudio.Mobile.Services.Dialog;
 using RichillCapital.TraderStudio.Mobile.Services.Features;
+using RichillCapital.TraderStudio.Mobile.Services.Http;
 using RichillCapital.TraderStudio.Mobile.Services.Navigation;
 using RichillCapital.TraderStudio.Mobile.ViewModels;
 using RichillCapital.TraderStudio.Mobile.Views;
@@ -25,6 +26,7 @@ namespace RichillCapital.TraderStudio.Mobile
             // Register app services
             builder.Services.AddSingleton<INavigationService, NavigationService>();
             builder.Services.AddSingleton<IDialogService, DialogService>();
+            builder.Services.AddSingleton<IWebRequestHandler, WebRequestHandler>();
 
             builder.Services.AddSingleton<IBrokerageService, BrokerageService>();
             builder.Services.AddSingleton<IDataFeedService, DataFeedService>();

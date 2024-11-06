@@ -1,14 +1,13 @@
 ﻿using RichillCapital.SharedKernel.Monads;
 using RichillCapital.TraderStudio.Mobile.Models;
+using RichillCapital.TraderStudio.Mobile.Services.Http;
 
 namespace RichillCapital.TraderStudio.Mobile.Services.Features;
 
-internal sealed class BrokerageService : IBrokerageService
+internal sealed class BrokerageService(
+    IWebRequestHandler _requestHandler) : 
+    IBrokerageService
 {
-    public BrokerageService()
-    {
-    }
-
     public Task<Result> DeleteBrokerageAsync(
         string name, 
         CancellationToken cancellationToken = default) => 
@@ -16,41 +15,13 @@ internal sealed class BrokerageService : IBrokerageService
 
     public async Task<Result<IEnumerable<BrokerageItem>>> ListBrokeragesAsync(CancellationToken cancellationToken = default)
     {
-        List<BrokerageItem> brokerages = 
-        [
-            new()
-            {
-                Provider = "RichillCapital",
-                Name = "RichillCapital.Exchange",
-                Status = "Disconnected",
-                Arguments = new()
-                {
-                    { "BaseAddress", "https://localhost:10000" },
-                },
-                CreatedTimeUtc = DateTimeOffset.UtcNow,
-            },
-            new()
-            {
-                Provider = "Max",
-                Name = "RichillCapital.Max",
-                Status = "Disconnected",
-                Arguments = new()
-                {
-                },
-                CreatedTimeUtc = DateTimeOffset.UtcNow,
-            },
-            new()
-            {
-                Provider = "Binance",
-                Name = "RichillCapital.Binance",
-                Status = "Disconnected",
-                Arguments = new()
-                {
-                },
-                CreatedTimeUtc = DateTimeOffset.UtcNow,
-            },
-        ];
+        var result = await _requestHandler.GetAsync<IEnumerable<BrokerageItem>>("https://10.0.2.2:10000/api/v1/brokerages");
 
-        return Result<IEnumerable<BrokerageItem>>.With(brokerages!);
+        if (result.IsFailure)
+        {
+            return Result<IEnumerable<BrokerageItem>>.Failure(result.Error);
+        }
+
+        return Result<IEnumerable<BrokerageItem>>.With(result.Value);
     }
 }

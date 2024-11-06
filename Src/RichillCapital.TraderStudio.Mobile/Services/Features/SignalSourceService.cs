@@ -1,37 +1,23 @@
 ﻿using RichillCapital.SharedKernel.Monads;
 using RichillCapital.TraderStudio.Mobile.Models;
+using RichillCapital.TraderStudio.Mobile.Services.Http;
 
 namespace RichillCapital.TraderStudio.Mobile.Services.Features;
 
-internal sealed class SignalSourceService : ISignalSourceService
+internal sealed class SignalSourceService(
+    IWebRequestHandler _requestHandler) : 
+    ISignalSourceService
 {
-    public SignalSourceService()
-    {
-    }
-
     public async Task<Result<IEnumerable<SignalSourceItem>>> ListSignalSourcesAsync(
         CancellationToken cancellationToken = default)
     {
-        List<SignalSourceItem> signalSources =
-        [
-            new()
-            {
-                Id = "TV-Long-Task",
-                Name = "TradingView Long Task",
-                Description = "TradingView Long Task",
-                Visibility = "Public",
-                CreatedTimeUtc = DateTimeOffset.UtcNow,
-            },
-            new()
-            {
-                Id = "TV-Short-Task",
-                Name = "TradingView Short Task",
-                Description = "TradingView Short Task",
-                Visibility = "Public",
-                CreatedTimeUtc = DateTimeOffset.UtcNow,
-            },
-        ];
+        var result = await _requestHandler.GetAsync<IEnumerable<SignalSourceItem>>("https://10.0.2.2:10000/api/v1/signal-sources");
 
-        return Result<IEnumerable<SignalSourceItem>>.With(signalSources);
+        if (result.IsFailure)
+        {
+            return Result<IEnumerable<SignalSourceItem>>.Failure(result.Error);
+        }
+
+        return Result<IEnumerable<SignalSourceItem>>.With(result.Value);
     }
 }

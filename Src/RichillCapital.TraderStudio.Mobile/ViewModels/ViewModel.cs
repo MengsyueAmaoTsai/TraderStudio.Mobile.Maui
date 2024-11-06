@@ -1,12 +1,13 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+
 using RichillCapital.TraderStudio.Mobile.Services.Dialog;
 using RichillCapital.TraderStudio.Mobile.Services.Navigation;
 
 namespace RichillCapital.TraderStudio.Mobile.ViewModels;
 
-public abstract partial class ViewModel : 
-    ObservableObject, 
+public abstract partial class ViewModel :
+    ObservableObject,
     IViewModel
 {
     private long _isBusy;
@@ -47,7 +48,7 @@ public abstract partial class ViewModel :
         {
             await _dialogService.ShowAlertAsync(
                 "Error",
-                $"An error occurred while processing your request. {ex}",
+                $"An error occurred while processing your request. {ex.Message}",
                 "Ok");
         }
         finally
