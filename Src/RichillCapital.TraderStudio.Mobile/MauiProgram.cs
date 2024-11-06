@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Maui;
 using Microsoft.Extensions.Logging;
+using RichillCapital.TraderStudio.Mobile.Services.Dialog;
 using RichillCapital.TraderStudio.Mobile.Services.Features;
 using RichillCapital.TraderStudio.Mobile.Services.Navigation;
 using RichillCapital.TraderStudio.Mobile.ViewModels;
@@ -22,8 +23,12 @@ namespace RichillCapital.TraderStudio.Mobile
                 });
 
             // Register app services
-            builder.Services.AddSingleton<IBrokerageService, BrokerageService>();
             builder.Services.AddSingleton<INavigationService, NavigationService>();
+            builder.Services.AddSingleton<IDialogService, DialogService>();
+
+            builder.Services.AddSingleton<IBrokerageService, BrokerageService>();
+            builder.Services.AddSingleton<IDataFeedService, DataFeedService>();
+            builder.Services.AddSingleton<ISignalSourceService, SignalSourceService>();
 
             // Register views
             builder.Services.AddSingleton<MainPage>();

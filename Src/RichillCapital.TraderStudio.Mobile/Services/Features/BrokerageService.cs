@@ -1,10 +1,9 @@
 ﻿using RichillCapital.SharedKernel.Monads;
 using RichillCapital.TraderStudio.Mobile.Models;
-using System.Net.Http.Json;
 
 namespace RichillCapital.TraderStudio.Mobile.Services.Features;
 
-internal class BrokerageService : IBrokerageService
+internal sealed class BrokerageService : IBrokerageService
 {
     public BrokerageService()
     {

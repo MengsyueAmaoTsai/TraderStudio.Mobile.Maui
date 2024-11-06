@@ -42,6 +42,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Update="Views\BrokerageDetailsPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\BrokeragesPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
