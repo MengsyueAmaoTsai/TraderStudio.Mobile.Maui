@@ -48,7 +48,7 @@ public abstract partial class ViewModel :
         {
             await _dialogService.ShowAlertAsync(
                 "Error",
-                $"An error occurred while processing your request. {ex.Message}",
+                $"An error occurred while processing your request. {ex}",
                 "Ok");
         }
         finally

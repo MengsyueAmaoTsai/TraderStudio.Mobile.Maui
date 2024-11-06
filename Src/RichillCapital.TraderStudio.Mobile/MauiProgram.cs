@@ -1,5 +1,7 @@
 ﻿using CommunityToolkit.Maui;
 using Microsoft.Extensions.Logging;
+
+using RichillCapital.TraderStudio.Mobile.Services.CurrentUser;
 using RichillCapital.TraderStudio.Mobile.Services.Dialog;
 using RichillCapital.TraderStudio.Mobile.Services.Features;
 using RichillCapital.TraderStudio.Mobile.Services.Http;
@@ -24,6 +26,7 @@ namespace RichillCapital.TraderStudio.Mobile
                 });
 
             // Register app services
+            builder.Services.AddSingleton<ICurrentUser, CurrentUser>();
             builder.Services.AddSingleton<INavigationService, NavigationService>();
             builder.Services.AddSingleton<IDialogService, DialogService>();
             builder.Services.AddSingleton<IWebRequestHandler, WebRequestHandler>();
