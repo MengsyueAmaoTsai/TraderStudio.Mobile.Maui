@@ -24,15 +24,20 @@
                 
                 <Label 
                     Grid.Row="1" 
-                    Grid.Column="1" 
+                    Grid.Column="0" 
+                    Grid.ColumnSpan="2"
                     Text="{Binding Status}" />
                 
                 <Label 
-                    Grid.Row="3" 
+                    Grid.Row="2" 
+                    Grid.Column="0"
                     Grid.ColumnSpan="2" 
                     Text="{Binding CreatedTimeUtc, StringFormat='Created on: {0:yyyy-MM-dd HH:mm:ss}'}"/>
 
-                <Button />
+                <Button 
+                    Grid.Row="3"
+                    Grid.Column="0"
+                    Text="Start"/>
             </Grid>
         </Frame>
     </ContentView.Content>

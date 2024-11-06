@@ -5,7 +5,7 @@
              xmlns:templates="clr-namespace:RichillCapital.TraderStudio.Mobile.Views.Templates"
              x:Class="RichillCapital.TraderStudio.Mobile.Views.DataFeedsPage"
              x:DataType="viewModels:DataFeedsViewModel"
-             Title="DataFeedsPage">
+             Title="Data feeds">
     <CollectionView 
         ItemsSource="{Binding DataFeeds}">
         <CollectionView.ItemTemplate>

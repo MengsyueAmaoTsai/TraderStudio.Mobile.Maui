@@ -6,7 +6,7 @@
              xmlns:templates="clr-namespace:RichillCapital.TraderStudio.Mobile.Views.Templates"
              x:Class="RichillCapital.TraderStudio.Mobile.Views.BrokeragesPage"
              x:DataType="viewModels:BrokeragesViewModel"
-             Title="BrokeragesPage">
+             Title="Brokerages">
     <Grid RowDefinitions="Auto, Auto">
         <ActivityIndicator 
             Grid.Row="0"

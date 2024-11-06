@@ -5,7 +5,7 @@
              xmlns:templates="clr-namespace:RichillCapital.TraderStudio.Mobile.Views.Templates"
              x:Class="RichillCapital.TraderStudio.Mobile.Views.SignalSourcesPage"
              x:DataType="viewModels:SignalSourcesViewModel"
-             Title="SignalSourcesPage">
+             Title="Signal sources">
     <CollectionView 
         ItemsSource="{Binding SignalSources}">
         <CollectionView.ItemTemplate>
