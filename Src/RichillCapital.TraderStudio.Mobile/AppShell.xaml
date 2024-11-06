@@ -7,7 +7,13 @@
     xmlns:views="clr-namespace:RichillCapital.TraderStudio.Mobile.Views"
     Shell.FlyoutBehavior="Flyout"
     Title="RichillCapital.TraderStudio.Mobile">
-
+    
+    <Shell.FlyoutHeader>
+        <Grid BackgroundColor="DarkSlateBlue">
+            <Label Text="Hello, flyout header" />
+        </Grid>
+    </Shell.FlyoutHeader>
+    
     <FlyoutItem Title="Home">
         <ShellContent 
             Title="Home" 
@@ -31,4 +37,10 @@
             Title="Signal Sources" 
             ContentTemplate="{DataTemplate views:SignalSourcesPage}"/>
     </FlyoutItem>
+
+    <Shell.FlyoutFooter>
+        <Grid BackgroundColor="DarkSlateBlue">
+            <Label Text="Hello, flyout footer" />
+        </Grid>
+    </Shell.FlyoutFooter>
 </Shell>
