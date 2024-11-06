@@ -7,7 +7,14 @@
     <ContentView.Content>
         <Frame>
             <Grid RowDefinitions="Auto, Auto, Auto, Auto" ColumnDefinitions="Auto, Auto">
-                <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding Name}"/>
+                <Label Grid.Row="0">
+                    <Label.Text>
+                        <MultiBinding StringFormat="{}{0} ({1})">
+                            <Binding Path="Name" />
+                            <Binding Path="Provider" />
+                        </MultiBinding>
+                    </Label.Text>
+                </Label>
                 <Label Grid.Row="1" Grid.Column="1" Text="{Binding Status}" />
                 <Label Grid.Row="3" Grid.ColumnSpan="2" Text="{Binding CreatedTimeUtc, StringFormat='Created on: {0:yyyy-MM-dd HH:mm:ss}'}"/>
             </Grid>
