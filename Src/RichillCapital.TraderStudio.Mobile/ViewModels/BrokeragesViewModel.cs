@@ -43,6 +43,12 @@ public sealed partial class BrokeragesViewModel : ViewModel
     [RelayCommand]
     private async Task ViewDetailsAsync(BrokerageItem item)
     {
+        if (item is null)
+        {
+            await _dialogService.ShowAlertAsync("Error", "No item given", "Ok");
+            return;
+        }
+
         await _dialogService.ShowAlertAsync("Details", "This is brokerage details for ", "Ok");
     }
 }

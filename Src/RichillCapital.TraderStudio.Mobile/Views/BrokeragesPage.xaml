@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:models="clr-namespace:RichillCapital.TraderStudio.Mobile.Models"
              xmlns:viewModels="clr-namespace:RichillCapital.TraderStudio.Mobile.ViewModels"
              xmlns:templates="clr-namespace:RichillCapital.TraderStudio.Mobile.Views.Templates"
              x:Class="RichillCapital.TraderStudio.Mobile.Views.BrokeragesPage"
@@ -16,10 +17,11 @@
         <Grid Grid.Row="1">
             <CollectionView
                 ItemsSource="{Binding Brokerages}"
+                SelectionMode="Single"
                 SelectionChangedCommand="{Binding ViewDetailsCommand}"
                 SelectionChangedCommandParameter="{Binding SelectedItem, Source={RelativeSource Self}}">
                 <CollectionView.ItemTemplate>
-                    <DataTemplate>
+                    <DataTemplate x:DataType="models:BrokerageItem">
                         <templates:BrokerageItemTemplate/>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>

@@ -6,7 +6,7 @@
 		<RootNamespace>RichillCapital.TraderStudio.Mobile</RootNamespace>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
-		<TargetFrameworks>net8.0;net8.0-android</TargetFrameworks>
+		<TargetFrameworks>net8.0-android;net8.0</TargetFrameworks>
 		<OutputType Condition="'$(TargetFramework)' != 'net8.0'">Exe</OutputType>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21.0</SupportedOSPlatformVersion>
 
