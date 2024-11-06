@@ -5,7 +5,13 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Src", "Src", "{A5B918E9-8325-4916-9D80-3D7DD2A6A164}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RichillCapital.TraderStudio.Mobile", "Src\RichillCapital.TraderStudio.Mobile\RichillCapital.TraderStudio.Mobile.csproj", "{26E8F6B3-D0BB-44D3-8C0C-512C2FA39EBD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RichillCapital.TraderStudio.Mobile", "Src\RichillCapital.TraderStudio.Mobile\RichillCapital.TraderStudio.Mobile.csproj", "{26E8F6B3-D0BB-44D3-8C0C-512C2FA39EBD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{E197C5C5-4CE3-41DD-9822-8DDDFE85B5F9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RichillCapital.TraderStudio.Mobile.ArchitectureTests", "Tests\RichillCapital.TraderStudio.Mobile.ArchitectureTests\RichillCapital.TraderStudio.Mobile.ArchitectureTests.csproj", "{1FF3AA95-F72F-4AB9-9370-B69B4DA26E7D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RichillCapital.TraderStudio.Mobile.UnitTests", "Tests\RichillCapital.TraderStudio.Mobile.UnitTests\RichillCapital.TraderStudio.Mobile.UnitTests.csproj", "{9B739A03-7E24-47A0-82D1-1E70B105F42F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,11 +25,24 @@ Global
 		{26E8F6B3-D0BB-44D3-8C0C-512C2FA39EBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{26E8F6B3-D0BB-44D3-8C0C-512C2FA39EBD}.Release|Any CPU.Build.0 = Release|Any CPU
 		{26E8F6B3-D0BB-44D3-8C0C-512C2FA39EBD}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{1FF3AA95-F72F-4AB9-9370-B69B4DA26E7D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1FF3AA95-F72F-4AB9-9370-B69B4DA26E7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1FF3AA95-F72F-4AB9-9370-B69B4DA26E7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1FF3AA95-F72F-4AB9-9370-B69B4DA26E7D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9B739A03-7E24-47A0-82D1-1E70B105F42F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B739A03-7E24-47A0-82D1-1E70B105F42F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B739A03-7E24-47A0-82D1-1E70B105F42F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B739A03-7E24-47A0-82D1-1E70B105F42F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{26E8F6B3-D0BB-44D3-8C0C-512C2FA39EBD} = {A5B918E9-8325-4916-9D80-3D7DD2A6A164}
+		{1FF3AA95-F72F-4AB9-9370-B69B4DA26E7D} = {E197C5C5-4CE3-41DD-9822-8DDDFE85B5F9}
+		{9B739A03-7E24-47A0-82D1-1E70B105F42F} = {E197C5C5-4CE3-41DD-9822-8DDDFE85B5F9}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {33A3CBD7-074B-47B0-AE33-3DB82C5F5EE2}
 	EndGlobalSection
 EndGlobal
