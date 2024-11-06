@@ -37,11 +37,11 @@ public sealed partial class BrokeragesViewModel : ViewModel
             foreach (var b in result.Value)
             {
                 Brokerages.Add(b);
-            };
+            }
         });
 
     [RelayCommand]
-    private async Task ViewDetailsAsync()
+    private async Task ViewDetailsAsync(BrokerageItem item)
     {
         await _dialogService.ShowAlertAsync("Details", "This is brokerage details for ", "Ok");
     }

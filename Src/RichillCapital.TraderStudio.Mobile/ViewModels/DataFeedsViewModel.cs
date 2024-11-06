@@ -21,20 +21,21 @@ public sealed partial class DataFeedsViewModel : ViewModel
 
     public ObservableCollection<DataFeedItem> DataFeeds { get; } = [];
 
-    protected override async Task InitializeAsync()
-    {
-        var result = await _dataFeedService.ListDataFeedsAsync(default);
-
-        if (result.IsFailure)
+    protected override async Task InitializeAsync() =>
+        await IsBusyFor(async () =>
         {
-            return;
-        }
+            var result = await _dataFeedService.ListDataFeedsAsync(default);
 
-        DataFeeds.Clear();
+            if (result.IsFailure)
+            {
+                return;
+            }
 
-        foreach (var dataFeed in result.Value)
-        {
-            DataFeeds.Add(dataFeed);
-        }
-    }
+            DataFeeds.Clear();
+
+            foreach (var dataFeed in result.Value)
+            {
+                DataFeeds.Add(dataFeed);
+            }
+        });
 }

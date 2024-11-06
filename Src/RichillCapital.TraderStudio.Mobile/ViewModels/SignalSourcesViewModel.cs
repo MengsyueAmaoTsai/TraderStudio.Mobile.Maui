@@ -21,20 +21,21 @@ public sealed partial class SignalSourcesViewModel : ViewModel
 
     public ObservableCollection<SignalSourceItem> SignalSources { get; } = [];
 
-    protected override async Task InitializeAsync()
-    {
-        var result = await _signalSourceService.ListSignalSourcesAsync(default);
-
-        if (result.IsFailure)
+    protected override async Task InitializeAsync() =>
+        await IsBusyFor(async () =>
         {
-            return;
-        }
+            var result = await _signalSourceService.ListSignalSourcesAsync(default);
 
-        SignalSources.Clear();
+            if (result.IsFailure)
+            {
+                return;
+            }
 
-        foreach (var signalSource in result.Value)
-        {
-            SignalSources.Add(signalSource);
-        }
-    }
+            SignalSources.Clear();
+
+            foreach (var signalSource in result.Value)
+            {
+                SignalSources.Add(signalSource);
+            }
+        });
 }

@@ -6,13 +6,24 @@
              x:Class="RichillCapital.TraderStudio.Mobile.Views.BrokeragesPage"
              x:DataType="viewModels:BrokeragesViewModel"
              Title="BrokeragesPage">
-    <CollectionView 
-        ItemsSource="{Binding Brokerages}"
-        SelectionChangedCommand="{Binding ViewDetailsCommand}">
-        <CollectionView.ItemTemplate>
-            <DataTemplate>
-                <templates:BrokerageItemTemplate />
-            </DataTemplate>
-        </CollectionView.ItemTemplate>
-    </CollectionView>
+    <Grid RowDefinitions="Auto, Auto">
+        <ActivityIndicator 
+            Grid.Row="0"
+            IsVisible="{Binding IsBusy}"
+            IsRunning="{Binding IsBusy}">
+        </ActivityIndicator>
+        
+        <Grid Grid.Row="1">
+            <CollectionView
+                ItemsSource="{Binding Brokerages}"
+                SelectionChangedCommand="{Binding ViewDetailsCommand}"
+                SelectionChangedCommandParameter="{Binding SelectedItem, Source={RelativeSource Self}}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <templates:BrokerageItemTemplate/>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
+    </Grid>
 </ContentPage>
