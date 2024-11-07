@@ -48,7 +48,7 @@ jobs:
         run: dotnet restore
 
       - name: Build
-        run: dotnet build ${{ env.MOBILE_PROJECT }} -c ${{ env.CONFIGURATION }} -f ${{ env.TARGET_FRAMEWORK }} -o ${{ env.OUTPUT_DIRECTORY }} --no-restore -p:AndroidSigningKeyStore=./keys/${{ env.SIGNING_KEY_NAME }}.keystore  -p:AndroidSigningKeyAlias=${{ env.SIGNING_KEY_NAME }} -p:AndroidSigningKeyPass=${{ secrets.SIGNING_KEY_PASSWORD }} -p:AndroidSigningStorePass=${{ secrets.KEYSTORE_PASSWORD }}
+        run: dotnet build ${{ env.MOBILE_PROJECT }} -c ${{ env.CONFIGURATION }} -f ${{ env.TARGET_FRAMEWORK }} -o ${{ env.OUTPUT_DIRECTORY }} --no-restore -p:AndroidSigningKeyStore="./keys/${{ env.SIGNING_KEY_NAME }}.keystore"  -p:AndroidSigningKeyAlias="${{ env.SIGNING_KEY_NAME }}" -p:AndroidSigningKeyPass="${{ secrets.SIGNING_KEY_PASSWORD }}" -p:AndroidSigningStorePass="${{ secrets.KEYSTORE_PASSWORD }}"
 
       - name: Run Tests
         run: dotnet test -c ${{ env.CONFIGURATION }} -f net8.0 --no-restore --verbosity normal
