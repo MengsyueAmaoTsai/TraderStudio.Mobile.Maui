@@ -11,12 +11,12 @@ on:
       - dev
 
 env:
-    DOTNET_VERSION: 8.0.x
-    MOBILE_PROJECT: ./Src/RichillCapital.TraderStudio.Mobile/RichillCapital.TraderStudio.Mobile.csproj
-    CONFIGURATION: Debug
-    TARGET_FRAMEWORK: net8.0-android
-    SIGNING_KEY_NAME: richillcapital-traderstudio-mobile
-    OUTPUT_DIRECTORY: ./artifacts
+  DOTNET_VERSION: 8.0.x
+  MOBILE_PROJECT: ./Src/RichillCapital.TraderStudio.Mobile/RichillCapital.TraderStudio.Mobile.csproj
+  CONFIGURATION: Debug
+  TARGET_FRAMEWORK: net8.0-android
+  SIGNING_KEY_NAME: richillcapital-traderstudio-mobile
+  OUTPUT_DIRECTORY: ./artifacts
 
 jobs:
   build:

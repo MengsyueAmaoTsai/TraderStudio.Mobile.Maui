@@ -1,0 +1,59 @@
+name: TraderStudio.Mobile CD
+
+on:
+  push:
+    tags:
+      - '*'
+env:
+  DOTNET_VERSION: 8.0.x
+  MOBILE_PROJECT: ./Src/RichillCapital.TraderStudio.Mobile/RichillCapital.TraderStudio.Mobile.csproj
+  CONFIGURATION: Release
+  TARGET_FRAMEWORK: net8.0-android
+  SIGNING_KEY_NAME: richillcapital-traderstudio-mobile
+  OUTPUT_DIRECTORY: ./artifacts
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      
+      - name: Setup Keystore file
+        run: |
+          echo "${{ secrets.ANDROID_KEYSTORE }}" > ${{ env.SIGNING_KEY_NAME }}.asc
+          gpg -d --passphrase ${{ secrets.GPG_PASSPHRASE }} --batch ${{ env.SIGNING_KEY_NAME }}.asc > ${{ env.SIGNING_KEY_NAME }}.keystore
+
+      - name: Setup .NET SDK ${{ env.DOTNET_VERSION }}
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: ${{ env.DOTNET_VERSION }}
+
+      - name: Setup MSBuild.exe
+        uses: microsoft/setup-msbuild@v2
+      
+      - name: Install MAUI Workloads
+        run: dotnet workload install android
+      
+      - name: Restore Dependencies
+        run: dotnet restore
+
+      - name: Build Release APK
+        run: dotnet publish ${{ env.MOBILE_PROJECT }} -c ${{ env.CONFIGURATION }} -f ${{ env.TARGET_FRAMEWORK }} -o ${{ env.OUTPUT_DIRECTORY }} --no-restore -p:AndroidSigningKeyStore="./keys/${{ env.SIGNING_KEY_NAME }}.keystore"  -p:AndroidSigningKeyAlias="${{ env.SIGNING_KEY_NAME }}" -p:AndroidSigningKeyPass="${{ secrets.SIGNING_KEY_PASSWORD }}" -p:AndroidSigningStorePass="${{ secrets.KEYSTORE_PASSWORD }}"
+
+    #   - name: Authenticate to Google Cloud
+    #     uses: google-github-actions/auth@v1
+    #     with:
+    #       credentials_json: '${{ secrets.GOOGLE_PLAY_CREDENTIALS_JSON }}'
+
+    #   - name: Upload to Google Play
+    #     uses: r0adkll/upload-google-play@v1
+    #     with:
+    #       serviceAccountJson: '${{ secrets.GOOGLE_PLAY_CREDENTIALS_JSON }}'
+    #       packageName: ${{ env.PACKAGE_NAME }}
+    #       releaseFiles: ${{ env.OUTPUT_DIRECTORY }}/*Signed.apk
+    #       track: production # 可以是 internal、alpha、beta 或 production
+    #       inAppUpdatePriority: 3 # 可選
