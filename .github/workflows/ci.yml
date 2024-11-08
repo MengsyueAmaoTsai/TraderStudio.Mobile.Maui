@@ -34,7 +34,10 @@ jobs:
 
     - name: Build 
       run: dotnet build ./src/RichillCapital.TraderStudio.Mobile/RichillCapital.TraderStudio.Mobile.csproj -c Debug -f net8.0-android --no-restore -p:AndroidSigningKeyStore="./keys/richillcapital-traderstudio-mobile.keystore"  -p:AndroidSigningKeyAlias="richillcapital-traderstudio-mobile" -p:AndroidSigningKeyPass="${{ secrets.SIGNING_KEY_PASSWORD }}" -p:AndroidSigningStorePass="${{ secrets.KEYSTORE_PASSWORD }}"
-      
+    
+    - name: Tests
+      run: dotnet test -c Debug -f net8.0 --no-restore --verbosity normal
+    
     - name: Publish 
       run: dotnet publish ./src/RichillCapital.TraderStudio.Mobile/RichillCapital.TraderStudio.Mobile.csproj -c Debug -f net8.0-android -o ./artifact --no-restore -p:AndroidSigningKeyStore="./keys/richillcapital-traderstudio-mobile.keystore"  -p:AndroidSigningKeyAlias="richillcapital-traderstudio-mobile" -p:AndroidSigningKeyPass="${{ secrets.SIGNING_KEY_PASSWORD }}" -p:AndroidSigningStorePass="${{ secrets.KEYSTORE_PASSWORD }}"
 
