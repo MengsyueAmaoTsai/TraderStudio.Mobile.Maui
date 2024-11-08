@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Maui;
 using Microsoft.Extensions.Logging;
+using RichillCapital.TraderStudio.Mobile.Services;
 using RichillCapital.TraderStudio.Mobile.ViewModels;
 using RichillCapital.TraderStudio.Mobile.Views;
 
@@ -19,9 +20,12 @@ namespace RichillCapital.TraderStudio.Mobile
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
 
-            builder.Services.AddSingleton<MainPage>();
+            builder.Services.AddSingleton<ICurrentUser, CurrentUser>();
+            builder.Services.AddSingleton<INavigationService, NavigationService>();
+            builder.Services.AddSingleton<IDialogService, DialogService>();
 
-            builder.Services.AddSingleton<MainViewModel>();
+            builder.Services.AddViewModels();
+            builder.Services.AddViews();
 
 #if DEBUG
     		builder.Logging.AddDebug();
