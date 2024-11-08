@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{28612985-79B9-4222-8795-EFC2C70E534C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{0E931616-2378-4F0E-89BE-13A15DFF1FA0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RichillCapital.TraderStudio.Mobile", "src\RichillCapital.TraderStudio.Mobile\RichillCapital.TraderStudio.Mobile.csproj", "{C5A8655F-AFD9-4328-ACE5-2863DDE8B02D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C5A8655F-AFD9-4328-ACE5-2863DDE8B02D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C5A8655F-AFD9-4328-ACE5-2863DDE8B02D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C5A8655F-AFD9-4328-ACE5-2863DDE8B02D}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{C5A8655F-AFD9-4328-ACE5-2863DDE8B02D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C5A8655F-AFD9-4328-ACE5-2863DDE8B02D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C5A8655F-AFD9-4328-ACE5-2863DDE8B02D}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C5A8655F-AFD9-4328-ACE5-2863DDE8B02D} = {28612985-79B9-4222-8795-EFC2C70E534C}
+	EndGlobalSection
+EndGlobal
