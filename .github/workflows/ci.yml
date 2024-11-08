@@ -15,6 +15,11 @@ jobs:
       uses: actions/checkout@v4
       with:
         fetch-depth: 0
+    
+    - name: Setup Keystore
+      run: |
+        echo "${{ secrets.ANDROID_KEYSTORE }}" > richillcapital-traderstudio-mobile.asc
+        gpg -d --passphrase ${{ secrets.GPG_PASSPHRASE }} --batch richillcapital-traderstudio-mobile.asc > richillcapital-traderstudio-mobile.keystore
 
     - name: Setup .NET SDK
       uses: actions/setup-dotnet@v4
@@ -28,13 +33,10 @@ jobs:
       run: dotnet restore ./RichillCapital.TraderStudio.Mobile.sln
 
     - name: Build 
-      run: dotnet build ...
-
-    - name: Run Tests
-      run: dotnet test ...
+      run: dotnet build ./src/RichillCapital.TraderStudio.Mobile/RichillCapital.TraderStudio.Mobile.csproj -c Debug -f net8.0-android --no-restore -p:AndroidSigningKeyStore="./keys/richillcapital-traderstudio-mobile.keystore"  -p:AndroidSigningKeyAlias="richillcapital-traderstudio-mobile" -p:AndroidSigningKeyPass="${{ secrets.SIGNING_KEY_PASSWORD }}" -p:AndroidSigningStorePass="${{ secrets.KEYSTORE_PASSWORD }}"
       
-    - name: Publish Artifact
-      run: dotnet publish ... 
+    - name: Publish 
+      run: dotnet publish ./src/RichillCapital.TraderStudio.Mobile/RichillCapital.TraderStudio.Mobile.csproj -c Debug -f net8.0-android -o ./artifact --no-restore -p:AndroidSigningKeyStore="./keys/richillcapital-traderstudio-mobile.keystore"  -p:AndroidSigningKeyAlias="richillcapital-traderstudio-mobile" -p:AndroidSigningKeyPass="${{ secrets.SIGNING_KEY_PASSWORD }}" -p:AndroidSigningStorePass="${{ secrets.KEYSTORE_PASSWORD }}"
 
     - name: Upload Artifact
       uses: actions/upload-artifact@v4
