@@ -9,6 +9,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{0E931616
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RichillCapital.TraderStudio.Mobile", "src\RichillCapital.TraderStudio.Mobile\RichillCapital.TraderStudio.Mobile.csproj", "{C5A8655F-AFD9-4328-ACE5-2863DDE8B02D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RichillCapital.TraderStudio.Mobile.ArchitectureTests", "tests\RichillCapital.TraderStudio.Mobile.ArchitectureTests\RichillCapital.TraderStudio.Mobile.ArchitectureTests.csproj", "{909E047C-6BCC-4AEB-AF8E-FC098A2E809F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,11 +23,19 @@ Global
 		{C5A8655F-AFD9-4328-ACE5-2863DDE8B02D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C5A8655F-AFD9-4328-ACE5-2863DDE8B02D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C5A8655F-AFD9-4328-ACE5-2863DDE8B02D}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{909E047C-6BCC-4AEB-AF8E-FC098A2E809F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{909E047C-6BCC-4AEB-AF8E-FC098A2E809F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{909E047C-6BCC-4AEB-AF8E-FC098A2E809F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{909E047C-6BCC-4AEB-AF8E-FC098A2E809F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{C5A8655F-AFD9-4328-ACE5-2863DDE8B02D} = {28612985-79B9-4222-8795-EFC2C70E534C}
+		{909E047C-6BCC-4AEB-AF8E-FC098A2E809F} = {0E931616-2378-4F0E-89BE-13A15DFF1FA0}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1028BAC0-1C97-40EB-8A89-5D74F91F18B0}
 	EndGlobalSection
 EndGlobal
