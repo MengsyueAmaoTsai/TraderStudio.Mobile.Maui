@@ -9,10 +9,10 @@
 		<Nullable>enable</Nullable>
 		<RootNamespace>RichillCapital.TraderStudio.Mobile</RootNamespace>
 
-		<ApplicationTitle>RichillCapital.TraderStudio.Mobile</ApplicationTitle>
-		<ApplicationId>RichillCapital.TraderStudio.Mobile</ApplicationId>
-		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
+		<ApplicationId>Application.Id</ApplicationId>
+		<ApplicationTitle>Application.Title</ApplicationTitle>
 		<ApplicationVersion>1</ApplicationVersion>
+		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21.0</SupportedOSPlatformVersion>
 	</PropertyGroup>
 
