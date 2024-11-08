@@ -1,0 +1,43 @@
+name: RichillCapital.TraderStudio.Mobile CI
+
+on:
+  push:
+    branches:
+      - master
+      - dev
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+
+    - name: Setup .NET SDK
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 8.0.x
+
+    - name: Install MAUI Workloads
+      run: dotnet workload install android
+    
+    - name: Restore Dependencies
+      run: dotnet restore ./RichillCapital.TraderStudio.Mobile.sln
+
+    - name: Build 
+      run: dotnet build ...
+
+    - name: Run Tests
+      run: dotnet test ...
+      
+    - name: Publish Artifact
+      run: dotnet publish ... 
+
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: RichillCapital.TraderStudio.Mobile-0.0.0-Android-Debug
+        path: ./artifacts/**/*.apk
