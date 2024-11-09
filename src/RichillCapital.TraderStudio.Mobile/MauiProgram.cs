@@ -23,6 +23,7 @@ namespace RichillCapital.TraderStudio.Mobile
             builder.Services.AddSingleton<ICurrentUser, CurrentUser>();
             builder.Services.AddSingleton<INavigationService, NavigationService>();
             builder.Services.AddSingleton<IDialogService, DialogService>();
+            builder.Services.AddSingleton<IToastService, ToastService>();
 
             builder.Services.AddViewModels();
             builder.Services.AddViews();

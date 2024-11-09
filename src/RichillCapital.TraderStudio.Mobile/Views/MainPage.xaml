@@ -5,6 +5,6 @@
              x:Class="RichillCapital.TraderStudio.Mobile.Views.MainPage"
              x:DataType="viewModels:MainViewModel">
     <Grid>
-        <Label Text="Hello world"/>
+        <Button Text="Show notification" Clicked="Button_Clicked"/>
     </Grid>    
 </ContentPage>
