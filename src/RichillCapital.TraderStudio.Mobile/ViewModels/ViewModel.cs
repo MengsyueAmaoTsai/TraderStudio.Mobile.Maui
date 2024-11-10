@@ -1,6 +1,8 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 
+using RichillCapital.TraderStudio.Mobile.Services;
+
 namespace RichillCapital.TraderStudio.Mobile.ViewModels;
 
 public abstract partial class ViewModel : 
@@ -9,8 +11,12 @@ public abstract partial class ViewModel :
 {
     private long _isBusy;
 
-    protected ViewModel()
+    protected readonly INavigationService _nagivationService;
+
+    protected ViewModel(INavigationService navigationService)
     {
+        _nagivationService = navigationService;
+
         InitializeAsyncCommand =
             new AsyncRelayCommand(
                 async () =>
