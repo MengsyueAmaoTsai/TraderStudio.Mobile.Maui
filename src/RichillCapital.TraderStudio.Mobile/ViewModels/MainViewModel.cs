@@ -5,8 +5,9 @@ namespace RichillCapital.TraderStudio.Mobile.ViewModels;
 public sealed partial class MainViewModel : ViewModel
 {
     public MainViewModel(
+        ICurrentUser currentUser,
         INavigationService navigationService)
-        : base(navigationService)
+        : base(currentUser, navigationService)
     {
     }
 }

@@ -11,10 +11,14 @@ public abstract partial class ViewModel :
 {
     private long _isBusy;
 
+    protected readonly ICurrentUser _currentUser;
     protected readonly INavigationService _nagivationService;
 
-    protected ViewModel(INavigationService navigationService)
+    protected ViewModel(
+        ICurrentUser currentUser,
+        INavigationService navigationService)
     {
+        _currentUser = currentUser;
         _nagivationService = navigationService;
 
         InitializeAsyncCommand =
